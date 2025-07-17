@@ -13,7 +13,7 @@ export async function getAllNews(page,limit) {
 
 export async function getNewsById(id) {
     const db = await getDb();
-    const idByNews = db.collection("news").findOne({_id:new ObjectId(id)});
+    const idByNews = db.collection("News").findOne({_id:new ObjectId(id)});
     return idByNews;
 }
 
