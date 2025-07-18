@@ -9,12 +9,12 @@ export default function Home() {
     useEffect(() => {
     axios.get("/api/news")
       .then(res => {
-        console.log(res.data); // Konsolda veriyi görebilirsin
+        console.log(res.data); 
         setNews(res.data.news || []);
       })
       .catch(err => console.error("Haber listeleri alınamadı", err));
   }, []);
-  
+
   return (
     <main className="flex flex-col lg:flex-row min-h-screen bg-[#CF161C] text-white">
      
