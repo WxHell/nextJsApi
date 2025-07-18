@@ -9,7 +9,7 @@ export async function GET(req) {
 
     const allCategory = await getCategoryAllNews(page, limit);
 
-    return Response.json({ success: true, data: allCategory }); 
+    return Response.json({ success: true, categories: allCategory }); 
   } catch (error) {
     return handleApiError(error, "Kategoriler getirilemedi");
   }

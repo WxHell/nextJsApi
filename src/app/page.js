@@ -1,127 +1,92 @@
-"use client"
+"use client";
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-export default  function NewsList() {
-     const [news, setNews] = useState([]);
 
-  useEffect(() => {
+export default function Home() {
+  const [news, setNews] = useState([]);
+
+    useEffect(() => {
     axios.get("/api/news")
       .then(res => {
+        console.log(res.data); // Konsolda veriyi görebilirsin
         setNews(res.data.news || []);
       })
       .catch(err => console.error("Haber listeleri alınamadı", err));
   }, []);
-
-
+  
   return (
-   
-    <main className="flex min-h-screen flex-wrap ">
-      <div className="flex lg:w-[calc(100%-1140px)] items-center bg-[#FFFFFF] p-8 border-r-4">
+    <main className="flex flex-col lg:flex-row min-h-screen bg-[#CF161C] text-white">
+     
+      <div className="flex flex-col ">
+        <div className="fixed-top h-20 px-4 py-6">
+          <img src="anaSayfaLog.png" alt="logo" className="h-6 w-12"/>
+        </div>
        
-        <div className="text-[#000000]">
-          <div className="fixed top-0 left-0 h-40  w-9 bg-red-600 flex flex-col items-center pt-4">
-            <img src="/image/anaSayfaLogo.png" alt="logo" className=" fixed top-1 left-0 w-9 h-5 z-4 px-1" />
-          </div>
-          
+        <div className="bg-white h-full w-10"></div>
+      </div>
 
-          <div className="text-2xl font [Poppins] opacity-50">26.07.2025</div>
-          <div className="mb-4 text-4xl font-bold font-[AbrilFatface]">
-            Bugün ne oldu?
+  
+      <div className="flex-grow p-10 flex flex-col justify-between top-0 bottom-0 m-auto">
+        <div className="px-15">
+          <div className="text-xl text-[25px] leading-[30px] font-bold font-[Abril_Fatface] mt-4">26.07.2025</div>
+          <div className="mb-4 text-[130px] leading-[100px] font-bold font-[Abril_Fatface] text-leading-tight">
+            Bugün <br /> ne oldu?
           </div>
-          <div className="mb-4 text-[9px] opacity-50">
+         
+          <div className="mb-4 text-xs">
             {news.length > 0 ? news[0].summary : "Haber yok"}
           </div>
-
-        </div>
-
-      </div>
-      <div>           
-        <footer className=" text-xs text-gray-500 absolute bottom-0 left-4 ">
-          <p>
-            Copyright ©️ 2017 – Tüm hakları saklıdır. <br />
-            Habertürk Gazetecilik A.Ş.
-          </p>
-          </footer>
-      </div>
-
-
-      <div className="lg:w-[1140px] bg-white overflow-x-auto  h-screen">
-        <ul className="text-black  text-sm flex flex-row items-stretch justify-center  h-full w-400 overflow-x-auto">
-            
-          <li className="relative border-r border-gray-300 transition duration-300 hover:bg-orange-50 pr-4 flex-1 flex flex-col justify-center items-center items-start ">
-            <div className="px-4 ">
-            <div className="absolute top-4 left-0 font-bold text-4xl pl-4 opacity-25">01</div>
-            <p className="self-start text-xs text-black opacity-50  "> 3 saat önce </p>
-            <p className="mt-2 mb-2 font-bold ">
-              Lorem Ipsum.dkjfşlzkşl şlkdfşlkşlkdf dhshdk sjdkjashdk sjdhakjsdh jsadksj  jsdkhajs jsdkjads jsdkjsdh jadshkjs jhdkasjhk şladkfşlkdf şladkfşkdasş işafsifi lşakdlkdşf askşlksdşl şlaskşlkds alkfsşlksadş laskdjfşlj..
-            </p>
-            <img className="pb-4 " src="/image/bg-image.png" alt="Görsel" width={200} height={120}/>
-            <p className="text-sm mb-2 opacity-50">
-              Lorem Ipsum sjhkjhsjkd sjdhjksdhd jsdhkjdsh sjkdhkjsdhk jsdhksjdh dkhkadhkd jshdkjshk shdkhs sdhdhkhd kjdkdhj jhkjk...
-            </p>
-            <button className="self-start bg-white hover:bg-orange-50  px-4 py-2 font-bold text-black border border-gray-300">DETAY</button>
-           </div>
-          </li>
-
-          <li className="relative border-r border-gray-300 transition duration-300 hover:bg-orange-50 pr-4 flex-1 flex flex-col justify-center items-center items-start">
-            <div className="px-4">
-            <div className="absolute top-4 left-0 font-bold text-4xl opacity-25">02</div>
-            <p className="self-start text-xs text-black opacity-50  "> 3 saat önce </p>
-            <p className="mt-2 mb-2 font-bold ">
-              Lorem Ipsum.dkjfşlzkşl şlkdfşlkşlkdf dhshdk sjdkjashdk sjdhakjsdh jsadksj  jsdkhajs jsdkjads jsdkjsdh jadshkjs jhdkasjhk şladkfşlkdf şladkfşkdasş işafsifi lşakdlkdşf askşlksdşl şlaskşlkds alkfsşlksadş laskdjfşlj..
-            </p>
-            <img className="pb-4" src="/image/17.png" alt="Görsel" width={200} height={120}/>
-            <p className="text-sm mb-2 opacity-50">
-              Lorem Ipsum sjhkjhsjkd sjdhjksdhd jsdhkjdsh sjkdhkjsdhk jsdhksjdh dkhkadhkd jshdkjshk shdkhs sdhdhkhd kjdkdhj jhkjk...
-            </p>
-            <button className="self-start bg-white px-4 py-2 font-bold text-black border border-gray-300">DETAY</button>
+          <div className="flex flex-row gap-4 items-center">
+          
+            <div className="flex flex-col gap-1.5">
+              <div className="h-[0.25px] w-9 bg-white"></div>
+              <div className="h-[0.25px] w-9 bg-white"></div>
+              <div className="h-[0.25px] w-9 bg-white"></div>
+              <div className="h-[0.25px] w-9 bg-white"></div>
+              <div className="h-[0.25px] w-9 bg-white"></div>
+              <div className="h-[0.25px] w-9 bg-white"></div>
+            </div>
+          
+            <button type="button" className="bg-white px-4 py-2 font-bold text-red-500">
+              GÖRÜNTÜLE
+            </button>
           </div>
-          </li>
-
-          <li className="relative border-r border-gray-300 transition duration-300 hover:bg-orange-50 pr-4 flex-1 flex flex-col justify-center items-center items-start ">
-            <div className="px-4 ">
-            <div className="absolute top-4 left-0 font-bold text-4xl opacity-25">03</div>
-            <p className="self-start text-xs text-black opacity-50  "> 3 saat önce </p>
-            <p className="mt-2 mb-2 font-bold ">
-              Lorem Ipsum.dkjfşlzkşl şlkdfşlkşlkdf dhshdk sjdkjashdk sjdhakjsdh jsadksj  jsdkhajs jsdkjads jsdkjsdh jadshkjs jhdkasjhk şladkfşlkdf şladkfşkdasş işafsifi lşakdlkdşf askşlksdşl şlaskşlkds alkfsşlksadş laskdjfşlj..
-            </p>
-            <img className="pb-4" src="/image/18.png" alt="Görsel" width={200} height={120}/>
-            <p className="text-sm mb-2 opacity-50">
-              Lorem Ipsum sjhkjhsjkd sjdhjksdhd jsdhkjdsh sjkdhkjsdhk jsdhksjdh dkhkadhkd jshdkjshk shdkhs sdhdhkhd kjdkdhj jhkjk...
-            </p>
-            <button className="self-start bg-white px-4 py-2 font-bold text-black border border-gray-300  ">DETAY</button>
-            </div>
-          </li>
-
-          <li className="relative border-r border-gray-300 transition duration-300 hover:bg-orange-50 pr-4 flex-1 flex flex-col justify-center items-center items-start">
-             <div className="px-4 ">
-
-            <div className="absolute top-4 left-0 font-bold text-4xl opacity-25">REKLAM</div>
-            <p className="mt-16 mb-4 ">
-             <img className="pb-4" src="/image/reklam.png" alt="Görsel" width={200} height={120}/>
-            </p>
-            </div>
-          </li>
-
-          <li className="relative border-r border-gray-300 transition duration-300 hover:bg-orange-50 pr-4 flex-1 flex flex-col justify-center items-center items-start ">
-            <div className="absolute top-4 left-0 font-bold text-4xl opacity-25">04</div>
-            <div className="px-4 ">
-            <p className="self-start text-xs text-black opacity-50  "> 3 saat önce </p>
-            <p className="mt-2 mb-2 font-bold ">
-              Lorem Ipsum.dkjfşlzkşl şlkdfşlkşlkdf dhshdk sjdkjashdk sjdhakjsdh jsadksj  jsdkhajs jsdkjads jsdkjsdh jadshkjs jhdkasjhk şladkfşlkdf şladkfşkdasş işafsifi lşakdlkdşf askşlksdşl şlaskşlkds alkfsşlksadş laskdjfşlj..
-            </p>
-            <img className="pb-4" src="/image/19.png" alt="Görsel" width={200} height={120}/>
-            <p className="text-sm mb-2 opacity-50">
-              Lorem Ipsum sjhkjhsjkd sjdhjksdhd jsdhkjdsh sjkdhkjsdhk jsdhksjdh dkhkadhkd jshdkjshk shdkhs sdhdhkhd kjdkdhj jhkjk...
-            </p>
-            <button className="self-start bg-white px-4 py-2 font-bold text-black border border-gray-300">DETAY</button>
-            </div>
-          </li>
-        </ul>
+        
+          <div className="text-[8px] mt-10 absolute bottom-0 p-3">
+            Copyright © 2017 - Tüm hakları saklıdır. <br />
+            Habertürk Gazetecilik A.Ş.
+          </div>
+        </div>
       </div>
 
+   
+      <div className="bg-white hidden lg:block lg:w-[400px] p-6 lg:h-screen">
+        <div className="relative z-30 h-full w-full overflow-y-auto text-black
+        [mask-image:linear-gradient(to_bottom,transparent_0%,black_30%)]
+        [mask-size:100%_100%] [mask-repeat:no-repeat]">
+          <div className="relative z-30 h-full w-full overflow-y-auto text-black
+          [mask-image:linear-gradient(to_top,transparent_0%,black_30%)]
+          [mask-size:100%_100%] [mask-repeat:no-repeat]">
+           
+            <div className="absolute right-0 top-0 bottom-0 w-4 bg-white z-10 pointer-events-none" />
 
+            <ul className="text-xl flex flex-col gap-4 pl-15 px-10 text-center border-t border-black pt-4 font-[Poppins]">
+              {news.map((item, index) => (
+                <li key={item._id ?? index} className="border-b border-black pb-4">
+                  <div className="font-bold text-5xl h-[25px] overflow-hidden opacity-10">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  {item.summary}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute right-0 top-0 z-50 bg-white w-10 h-screen p-6 hidden lg:block"></div>
+      
     </main>
-
   );
-    }
+}

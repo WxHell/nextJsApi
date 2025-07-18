@@ -10,7 +10,7 @@ export async function GET(req) {
 
   const searchContent = await getAllSettings(page,limit);
 
-  return Response.json({succes:true,data : searchContent})
+  return Response.json({succes:true,settings : searchContent})
   }catch(error){
     return handleApiError(error,"Settings bilgileri alınmadı");
   }

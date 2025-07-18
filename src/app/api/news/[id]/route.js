@@ -7,7 +7,7 @@
         const { id } = params;
         const idNews = await getNewsById(id);
 
-        return Response.json({success:true,data:idNews})
+        return Response.json({success:true,id:idNews})
     }catch(error){
         return handleApiError(error,"İd alınmadı");
     }
