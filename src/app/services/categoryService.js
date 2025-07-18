@@ -1,4 +1,5 @@
 import { getDb } from "@/lib/db";
+import { ObjectId } from "mongodb";
 
 export async function getCategoryAllNews(page,limit) {
     const db = await getDb(); //db classından db bağlantılarını sağlar
@@ -12,5 +13,11 @@ export async function getSlugByNews(slug) {
     const db = await getDb();
     const getSlugByNews = db.collection("Category").findOne({slug});
     return getSlugByNews;
+    
+}
+
+export async function getNewsByCategoryId(categoryId) {
+    const db = await db.getDb();
+    return db.collection("News").find({category:new ObjectId(categoryId)}).toArray();
     
 }
