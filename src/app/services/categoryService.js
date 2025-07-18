@@ -8,7 +8,12 @@ export async function getCategoryAllNews(page,limit) {
     return getCategoryAllNews;
 }
 
-
+export async function getAllCategory() {
+    const db = await getDb();
+    const allCategory= await db.collection("Category").find({}).toArray();
+    return allCategory;
+    
+}
 export async function getSlugByNews(slug) {
     const db = await getDb();
     const getSlugByNews = db.collection("Category").findOne({slug});
