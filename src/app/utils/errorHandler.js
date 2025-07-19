@@ -3,7 +3,7 @@ export function  handleApiError(error,defaultMessage = "Sunucu Hatası"){
 
     return Response.json(
         {
-            succes:false,
+            success:false,
             message:defaultMessage,
             error:process.env.NODE_ENV === "development" ? error.message: undefined,
         },

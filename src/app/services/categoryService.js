@@ -13,16 +13,16 @@ export async function getAllCategory() {
     const allCategory= await db.collection("Category").find({}).toArray();
     return allCategory;
     
-}
+}   
 export async function getSlugByNews(slug) {
     const db = await getDb();
-    const getSlugByNews = db.collection("Category").findOne({slug});
+    const getSlugByNews = await db.collection("Category").findOne({slug});
     return getSlugByNews;
     
 }
 
 export async function getNewsByCategoryId(categoryId) {
-    const db = await db.getDb();
+    const db = await getDb();
     return db.collection("News").find({category:new ObjectId(categoryId)}).toArray();
     
 }

@@ -2,25 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import getNews from "../app/dummy-data/data"; // Assuming you have a dummy data file
+import Link from "next/link";
+
 
 export default function Home() {
-  const [news, setNews] = useState([]);
 
-    useEffect(() => {
-    axios.get("/api/news")
-      .then(res => {
-        console.log(res.data); 
-        setNews(res.data.news || []);
-      })
-      .catch(err => console.error("Haber listeleri alınamadı", err));
-  }, []);
-
+   const news = getNews();
   return (
     <main className="flex flex-col lg:flex-row min-h-screen bg-[#CF161C] text-white">
      
       <div className="flex flex-col ">
         <div className="fixed-top h-20 px-4 py-6">
-          <img src="anaSayfaLog.png" alt="logo" className="h-6 w-12"/>
+          <img src="assets/logo-white.png" alt="logo" className="h-6 w-12"/>
         </div>
        
         <div className="bg-white h-full w-10"></div>
@@ -47,10 +41,12 @@ export default function Home() {
               <div className="h-[0.25px] w-9 bg-white"></div>
               <div className="h-[0.25px] w-9 bg-white"></div>
             </div>
-          
-            <button type="button" className="bg-white px-4 py-2 font-bold text-red-500">
-              GÖRÜNTÜLE
-            </button>
+
+            <Link href="/news">
+               <button type="button" className="bg-white px-4 py-2 font-bold text-red-500">
+               GÖRÜNTÜLE
+               </button>
+            </Link>
           </div>
         
           <div className="text-[8px] mt-10 absolute bottom-0 p-3">

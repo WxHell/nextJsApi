@@ -8,7 +8,7 @@ export async function GET(req) {
     const limit = parseInt(searchParams.get("limit"));
     if (isNaN(page) ||isNaN(limit)){
         const allCategory = await getAllCategory();
-        return Response.json({scucces : true , categories:allCategory})
+        return Response.json({success : true , categories:allCategory})
     }
     const allCategoryPage = await getCategoryAllNews(page, limit);
 
