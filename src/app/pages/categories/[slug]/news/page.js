@@ -85,7 +85,7 @@ export default function Page() {
             <p className="mt-2 mb-2 font-bold ">
               Lorem Ipsum.dkjfşlzkşl şlkdfşlkşlkdf dhshdk sjdkjashdk sjdhakjsdh jsadksj  jsdkhajs jsdkjads jsdkjsdh jadshkjs jhdkasjhk şladkfşlkdf şladkfşkdasş işafsifi lşakdlkdşf askşlksdşl şlaskşlkds alkfsşlksadş laskdjfşlj..
             </p>
-            <img className="pb-4" src="//14.png" alt="Görsel" width={260} height={150}/>
+            <img className="pb-4" src="/images/14.png" alt="Görsel" width={260} height={150}/>
             <p className="text-sm mb-2 opacity-50">
               Lorem Ipsum sjhkjhsjkd sjdhjksdhd jsdhkjdsh sjkdhkjsdhk jsdhksjdh dkhkadhkd jshdkjshk shdkhs sdhdhkhd kjdkdhj jhkjk...
             </p>
@@ -102,7 +102,7 @@ export default function Page() {
             <p className="mt-2 mb-2 font-bold ">
               Lorem Ipsum.dkjfşlzkşl şlkdfşlkşlkdf dhshdk sjdkjashdk sjdhakjsdh jsadksj  jsdkhajs jsdkjads jsdkjsdh jadshkjs jhdkasjhk şladkfşlkdf şladkfşkdasş işafsifi lşakdlkdşf askşlksdşl şlaskşlkds alkfsşlksadş laskdjfşlj..
             </p>
-            <img className="pb-4" src="/images/14.png" alt="Görsel" width={260} height={150}/>
+            <img className="pb-4" src="/images/12.png" alt="Görsel" width={260} height={150}/>
             <p className="text-sm mb-2 opacity-50">
               Lorem Ipsum sjhkjhsjkd sjdhjksdhd jsdhkjdsh sjkdhkjsdhk jsdhksjdh dkhkadhkd jshdkjshk shdkhs sdhdhkhd kjdkdhj jhkjk...
             </p>
@@ -166,7 +166,7 @@ export default function Page() {
             <p className="mt-2 mb-2 font-bold ">
               Lorem Ipsum.dkjfşlzkşl şlkdfşlkşlkdf dhshdk sjdkjashdk sjdhakjsdh jsadksj  jsdkhajs jsdkjads jsdkjsdh jadshkjs jhdkasjhk şladkfşlkdf şladkfşkdasş işafsifi lşakdlkdşf askşlksdşl şlaskşlkds alkfsşlksadş laskdjfşlj..
             </p>
-            <img className="pb-4" src="/images/14.png" alt="Görsel" width={260} height={150}/>
+            <img className="pb-4" src="/images/20.png" alt="Görsel" width={260} height={150}/>
             <p className="text-sm mb-2 opacity-50">
               Lorem Ipsum sjhkjhsjkd sjdhjksdhd jsdhkjdsh sjkdhkjsdhk jsdhksjdh dkhkadhkd jshdkjshk shdkhs sdhdhkhd kjdkdhj jhkjk...
             </p>
@@ -183,7 +183,7 @@ export default function Page() {
             <p className="mt-2 mb-2 font-bold ">
               Lorem Ipsum.dkjfşlzkşl şlkdfşlkşlkdf dhshdk sjdkjashdk sjdhakjsdh jsadksj  jsdkhajs jsdkjads jsdkjsdh jadshkjs jhdkasjhk şladkfşlkdf şladkfşkdasş işafsifi lşakdlkdşf askşlksdşl şlaskşlkds alkfsşlksadş laskdjfşlj..
             </p>
-            <img className="pb-4" src="/images/14.png" alt="Görsel" width={260} height={150}/>
+            <img className="pb-4" src="/images/17.png" alt="Görsel" width={260} height={150}/>
             <p className="text-sm mb-2 opacity-50">
               Lorem Ipsum sjhkjhsjkd sjdhjksdhd jsdhkjdsh sjkdhkjsdhk jsdhksjdh dkhkadhkd jshdkjshk shdkhs sdhdhkhd kjdkdhj jhkjk...
             </p>

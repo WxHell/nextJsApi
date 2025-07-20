@@ -14,7 +14,7 @@ export default function Home() {
      
       <div className="flex flex-col ">
         <div className="fixed-top h-20 px-4 py-6">
-          <img src="assets/logo-white.png" alt="logo" className="h-6 w-12"/>
+          <img src="images/logo-white.png" alt="logo" className="h-6 w-12"/>
         </div>
        
         <div className="bg-white h-full w-10"></div>

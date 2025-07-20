@@ -29,7 +29,7 @@ export default function CategoriesMenu({children}) {
               }}
             >
               <div className="flex justify-center py-4 text-white text-lg font-bold w-20 h-16 p-4">
-                <img src="/assets/logo-white.png" alt="Logo" />
+                <img src="/images/logo-white.png" alt="Logo" />
               </div>
             </Link>
             
