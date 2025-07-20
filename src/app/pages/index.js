@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import getNews from "../app/dummy-data/page"; // Assuming you have a dummy data file
+import getNews from "../dummy-data/data"; // Assuming you have a dummy data file
 import Link from "next/link";
 
 
@@ -42,7 +42,7 @@ export default function Home() {
               <div className="h-[0.25px] w-9 bg-white"></div>
             </div>
 
-            <Link href="/pages/news">
+            <Link href="/news">
                <button type="button" className="bg-white px-4 py-2 font-bold text-red-500">
                GÖRÜNTÜLE
                </button>

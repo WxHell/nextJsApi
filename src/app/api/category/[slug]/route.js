@@ -1,5 +1,6 @@
 import { getSlugByNews } from "@/app/services/categoryService";
 import { handleApiError } from "@/app/utils/errorHandler";
+import { NextResponse } from "next/server";
 
 
 
@@ -9,7 +10,7 @@ export async function GET(req,{ params }) {
     const slugByNews = await getSlugByNews(slug);
     
 
-    return Response.json({ success: true, data: slugByNews });
+    return NextResponse.json({ success: true, data: slugByNews });
 
   } catch (error) {
     return handleApiError(error, "Haber kategorileri bulunamadı");

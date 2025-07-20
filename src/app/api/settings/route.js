@@ -1,6 +1,7 @@
 import { getAllNews } from "@/app/services/newsService";
 import { getAllSettings, getAllSettingsPagenation } from "@/app/services/settingsService";
 import { handleApiError } from "@/app/utils/errorHandler";
+import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try{
@@ -10,11 +11,11 @@ export async function GET(req) {
 
   if(isNaN(page) || isNaN(limit)){
     const allSettings = await getAllSettings();
-    return Response.json({succes:true,settings:allSettings});
+    return NextResponse.json({succes:true,settings:allSettings});
   }
   const searchContent = await getAllSettingsPagenation(page,limit);
 
-  return Response.json({succes:true,settings : searchContent})
+  return NextResponse.json({succes:true,settings : searchContent})
   }catch(error){
     return handleApiError(error,"Settings bilgileri alınmadı");
   }

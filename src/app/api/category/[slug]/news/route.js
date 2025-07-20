@@ -9,7 +9,7 @@ export async function GET(req,{params}) {
     const db = await getDb();
       
     if (!slug) {
-      return NextResponse.json({ success: false, message: "Slug is required" }, { status: 400 });
+      return NextResponse.json({ success: false, message: "Slug alınamadı" }, { status: 400 });
     }
     const category = await getSlugByNews(slug);
     if(!category){
@@ -25,7 +25,7 @@ export async function GET(req,{params}) {
       }
     }));
 
-    return Response.json({succes:true,data:populatedNews});
+    return NextResponse.json({succes:true,data:populatedNews});
     }catch(error){
         return handleApiError(error,"Haberler alınamadı")
     }

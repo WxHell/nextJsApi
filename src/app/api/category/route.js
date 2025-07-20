@@ -1,5 +1,6 @@
 import { handleApiError } from "@/app/utils/errorHandler";
 import { getAllCategory, getCategoryAllNews } from "@/app/services/categoryService";
+import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try {
@@ -8,11 +9,11 @@ export async function GET(req) {
     const limit = parseInt(searchParams.get("limit"));
     if (isNaN(page) ||isNaN(limit)){
         const allCategory = await getAllCategory();
-        return Response.json({success : true , categories:allCategory})
+        return NextResponse.json({success : true , categories:allCategory})
     }
     const allCategoryPage = await getCategoryAllNews(page, limit);
 
-    return Response.json({ success: true, categoriesPage: allCategoryPage }); 
+    return NextResponse.json({ success: true, categoriesPage: allCategoryPage }); 
   } catch (error) {
     return handleApiError(error, "Kategoriler getirilemedi");
   }
