@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import CategoriesMenu from '../../../components/page';
+import CategoriesMenu from '../../../components/CategoriesMenu';
 
 // Haberlerin fotoğraf yollarını tanımlayalım
 const newsImages = {

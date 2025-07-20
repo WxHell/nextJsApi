@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import CategoriesMenu from '../../../../components/page';
+import CategoriesMenu from '../../../../components/CategoriesMenu';
 import Link from 'next/link';
 
 export default function Page() {
