@@ -10,7 +10,7 @@ import { NextResponse } from "next/server";
 
         return NextResponse.json({success:true,_id:idNews})
     }catch(error){
-        return handleApiError(error,"İd alınmadı");
+        return handleApiError(error,"İd ait haber bulunamadı");
     }
     
     }
