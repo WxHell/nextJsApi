@@ -11,13 +11,13 @@ export async function GET(req) {
     let page = searchParams.get("page");
     let limit = searchParams.get("limit");
     if (page === null && limit === null) {
-      const allNews = await getAllCategory();
-      return NextResponse.json({ success: true, news: allNews });
+      const allCategory = await getAllCategory();
+      return NextResponse.json({ success: true, category: allCategory });
     }
     page = parseInt(page);
     limit = parseInt(limit);
     if (isNaN(page) || isNaN(limit)) {
-      return NextResponse.json({ success: false, news: null });
+      return NextResponse.json({ success: false, category: null });
     }
     return NextResponse.json({
       success: true,

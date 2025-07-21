@@ -1,4 +1,5 @@
-        import { getAllNews, getAllNewsByPageNation } from "@/app/services/newsService";
+        import { getAllCategory } from "@/app/services/categoryService";
+import { getAllNews, getAllNewsByPageNation } from "@/app/services/newsService";
         import { handleApiError } from "@/app/utils/errorHandler";
 import { NextResponse } from "next/server";
 
@@ -9,13 +10,13 @@ import { NextResponse } from "next/server";
                 let page = searchParams.get("page");
                 let limit = searchParams.get("limit");
                 if(page === null && limit === null){
-                     const allNews= await getAllNews();
+                     const allNews= await getAllCategory();
                      return NextResponse.json({success:true,news:allNews });   
                 }                
                 page = parseInt(page);
                 limit = parseInt(limit);
                 if(isNaN(page) || isNaN(limit)){
-                     return NextResponse.json({success:false,news:null });   
+                     return NextResponse.json({success:false,category:null });   
                 }
 
                 const News = await getAllNewsByPageNation(page,limit);      
