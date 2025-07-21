@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req,{params}) {
    try{
-    const {slug} = params;
+    const slug = params.slug;
     const db = await getDb();
       
     if (!slug) {

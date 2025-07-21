@@ -76,21 +76,21 @@ export default function CategoriesMenu({children}) {
                       <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                      <img src="/assets/Group420.svg" alt="Search" className="h-6 w-6" />
+                      <img src="/images/Group420.png" alt="Search" className="h-6 w-6" />
                       </Link>
                     </li>
                     <li className="hover:opacity-80">
                       <Link href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <img src="/assets/Path 2319.svg" alt="Notifications" className="h-6 w-6" />
+                        <img src="/images/Path 2319.svg" alt="Notifications" className="h-6 w-6" />
                       </Link>
                     </li>
                     <li className="hover:opacity-80">
                       <Link href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <img src="/assets/Group428.svg" alt="LinkedIn" className="h-6 w-6" />
+                        <img src="/images/Group428.svg" alt="LinkedIn" className="h-6 w-6" />
                       </Link>
                     </li>
                   </ul>
