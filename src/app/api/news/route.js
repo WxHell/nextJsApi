@@ -9,7 +9,7 @@ export async function GET(req) {
     let page = searchParams.get("page");
     let limit = searchParams.get("limit");
     if (page === null && limit === null) {
-      const allNews = await getAllCategory();
+      const allNews = await getAllNews();
       return NextResponse.json({ success: true, news: allNews });
     }
     page = parseInt(page);
