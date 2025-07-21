@@ -19,9 +19,10 @@ export async function GET(req) {
     if (isNaN(page) || isNaN(limit)) {
       return NextResponse.json({ success: false, category: null });
     }
+    const categoryAll = await getCategoryAllNews(page,limit);
     return NextResponse.json({
       success: true,
-      categoriesPage: allCategoryPage,
+      categoriesPage: categoryAll,
     });
   } catch (error) {
     return handleApiError(error, "Kategoriler getirilemedi");
