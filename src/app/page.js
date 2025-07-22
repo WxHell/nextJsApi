@@ -43,7 +43,7 @@ export default function Home() {
               <div className="h-[0.25px] w-9 bg-white"></div>
             </div>
 
-            <Link href="/pages/news">
+            <Link href="/pages/news/">
               <button
                 type="button"
                 className="bg-white px-4 py-2 font-bold text-red-500"

@@ -2,17 +2,19 @@
 "use client"
 import { useState } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useFetchSlugNews } from "../hooks/useFetch";
-import { fetchCategoryByNews } from "../axioService/allFetchNews";
+import useFetch from "../hooks/useFetch";
+import { fetchCategory } from "../axioService/allFetchNews";
 
 export default function CategoriesMenu({children}) {
-  const {slug} = useParams();
-  const {data:news,loading,error} = useFetchSlugNews(()=>fetchCategoryByNews(slug),[slug])
   const [isOpen, setIsOpen] = useState(false);
-  if(loading) return <p>Haberler yükleniyor...</p>
-  if(error) return <p>Haberler alınırken bir hata oluştu.</p>
-  if(!news) return <p>Haber bulunamadı</p>
+  const {
+    data:category,
+    loading,
+    error
+  } = useFetch(fetchCategory);
+  if(loading) return <p>Kategoriler yükleniyor...</p>
+  if(error) return <p>Kategoriler alınamadı</p>
+  if(!category) return <p>Kategori bulunamadı</p>
   return (
         <main className="fixed h-screen w-screen flex" 
         >
@@ -65,14 +67,16 @@ export default function CategoriesMenu({children}) {
             <div className="p-8">
               <div className="absolute top-0 bottom-0 m-auto flex items-center">
                 <ul className="text-5xl text-white font-bold flex flex-grow flex-col justify-center space-y-4"                >
+                  
                   <li className="z-40 transition-colors hover:text-[#980C10]"><Link href="/"> Anasayfa</Link></li>
-                  <li className="transition-colors hover:text-[#980C10]"><Link href="/categories/gundem/news">Gündem</Link></li>
-                  <li className="transition-colors hover:text-[#980C10]"><Link href="/categories/ekonomi/news">Ekonomi</Link></li>
-                  <li className="transition-colors hover:text-[#980C10]"><Link href="/categories/spor/news">Spor</Link></li>
-                  <li className="transition-colors hover:text-[#980C10]"><Link href="/categories/magazin/news">Magazin</Link></li>
-                  <li className="transition-colors hover:text-[#980C10]"><Link href="/categories/dunya/news">Dünya</Link></li>
-                  <li className="transition-colors hover:text-[#980C10]"><Link href="/categories/teknoloji/news">Teknoloji</Link></li>
-                  <li className="transition-colors hover:text-[#980C10]"><Link href="/categories/saglik/news">Sağlık</Link></li>
+                  {category.map((item,index) =>(
+                    <li key={item._id ?? index} 
+                    className="z-40 transition-colors hover:text-[#980C10]">
+                      <Link href={`/pages/category/${item.slug}/news`}>
+                       {item.name || "Kategori"}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
     
@@ -113,7 +117,7 @@ export default function CategoriesMenu({children}) {
     
           </div>
           
-          <div class="w-full h-full">
+          <div className="w-full h-full">
           {children}
           </div>
     

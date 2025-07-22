@@ -1,72 +1,86 @@
-    import { useState, useEffect, useCallback } from "react";
+        import { useState, useEffect, useCallback } from "react";
 
-    export default function useFetch(fetchFn) {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+        export default function useFetch(fetchFn) {
+        const [data, setData] = useState(null);
+        const [loading, setLoading] = useState(true);
+        const [error, setError] = useState(null);
 
-    useEffect(() => {
-        fetchFn()
-        .then(setData)
-        .catch(setError)
-        .finally(() => setLoading(false));
-    }, []);
+        useEffect(() => {
+            fetchFn()
+            .then(setData)
+            .catch(setError)
+            .finally(() => setLoading(false));
+        }, []);
 
-    return { data, loading, error };
-    }
-
-    export function useFetchById(fetchFn, deps = []) {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    //datayı çekmek için
-    const fetchData = useCallback(async () => {
-        try {
-        setLoading(true);
-        //fetchFn api istegi
-        const result = await fetchFn();
-        setData(result);
-        setError(null);
-        } catch (error) {
-        setError(error);
-        setData(null);
-        } finally {
-        setLoading(false);
+        return { data, loading, error };
         }
-    }, deps);
 
-    useEffect(() => {
-        fetchData();
-    }, [fetchData]);
+        export  function useCategory(fetchFn){
+            const [data,setData] = useState(null);
+            const [loading,setLoading] = useState(true);
+            const [error,setError] = useState(null);
 
-    return { data, loading, error, refetch: fetchData };
-    }
-    export function useFetchSlugNews(fetchFn,deps = []){
-    const [data,setData] = useState(null);
-    const [loading,setLoading] = useState(true);
-    const [error,setError] = useState(null);
-    const fetchData = useCallback(async ()=>{
-        try{
-        setLoading(true);
-        const result = await fetchFn();
-        setData(result);
-        setError(null);
-    }catch(error){
-        setError(error);
-        setData(null);
-    }finally{
-        setLoading(false);
-    
-    } },deps);
-        
-        useEffect(() =>{
+            useEffect(() =>{
+                fetchFn()
+                .then(setData)
+                .catch(setError)
+                .finally(() => setLoading(false));
+            },[]);
+            return {data,loading,error};
+        }
+
+        export function useFetchById(fetchFn, deps = []) {
+        const [data, setData] = useState(null);
+        const [loading, setLoading] = useState(true);
+        const [error, setError] = useState(null);
+
+        //datayı çekmek için
+        const fetchData = useCallback(async () => {
+            try {
+            setLoading(true);
+            //fetchFn api istegi
+            const result = await fetchFn();
+            setData(result);
+            setError(null);
+            } catch (error) {
+            setError(error);
+            setData(null);
+            } finally {
+            setLoading(false);
+            }
+        }, deps);
+
+        useEffect(() => {
             fetchData();
+        }, [fetchData]);
+
+        return { data, loading, error, refetch: fetchData };
+        }
+        export function useFetchSlugNews(fetchFn,deps = []){
+        const [data,setData] = useState(null);
+        const [loading,setLoading] = useState(true);
+        const [error,setError] = useState(null);
+        const fetchData = useCallback(async ()=>{
+            try{
+            setLoading(true);
+            const result = await fetchFn();
+            setData(result);
+            setError(null);
+        }catch(error){
+            setError(error);
+            setData(null);
+        }finally{
+            setLoading(false);
         
-        },[fetchData]);
+        } },deps);
+            
+            useEffect(() =>{
+                fetchData();
+            
+            },[fetchData]);
 
-        return{data,loading,error,refetch:fetchData};
-    }
+            return{data,loading,error,refetch:fetchData};
+        }
 
-   
+    
 

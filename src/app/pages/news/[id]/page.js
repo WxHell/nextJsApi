@@ -8,9 +8,12 @@ import { useParams } from "next/navigation";
 export default function Page() {
   const { id } = useParams();
 
-  const { data: news, loading, error } = useFetchById(() => fetchNewsById(id), [id]);
-  console.log("Fetched news:", news);
-
+  const {
+    data: news,
+    loading,
+    error,
+  } = useFetchById(() => id ? fetchNewsById(id) : Promise.resolve(null), [id]);
+  console.log("Detay haber verisi:", news);
   if (loading) return <p>Haberler yükleniyor...</p>;
   if (error) return <p>Haberler alınırken hata oluştu.</p>;
   if (!news) return <p>Haber bulunamadı.</p>;
@@ -22,7 +25,9 @@ export default function Page() {
         <h2 className="text-xl font-bold mb-4">Haber Özeti</h2>
         <div className="p-6 border border-gray-300 rounded-md bg-yellow-50">
           <div className="font-bold text-lg">{news.title}</div>
-          <p className="text-sm text-gray-700 mt-2 ">{news.summary.slice(0, 100)}...</p>
+          <p className="text-sm text-gray-700 mt-2 ">
+            {news.summary.slice(0, 100)}...
+          </p>
         </div>
       </div>
 
