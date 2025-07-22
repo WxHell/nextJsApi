@@ -1,78 +1,45 @@
 "use client";
 
-import { useState } from "react";
 import CategoriesMenu from "../../../components/CategoriesMenu";
-import useFetch from "@/app/hooks/useFetch";
-import { fetchAllNews } from "@/app/axioService/allFetchNews";
+import { useFetchById } from "@/app/hooks/useFetch";
+import { fetchNewsById } from "@/app/axioService/allFetchNews";
+import { useParams } from "next/navigation";
 
 export default function Page() {
-  const { data: news, loading, error } = useFetch(fetchAllNews);
-  const [selectedNews, setSelectedNews] = useState(null);
+  const { id } = useParams();
+
+  const { data: news, loading, error } = useFetchById(() => fetchNewsById(id), [id]);
+  console.log("Fetched news:", news);
 
   if (loading) return <p>Haberler yükleniyor...</p>;
   if (error) return <p>Haberler alınırken hata oluştu.</p>;
+  if (!news) return <p>Haber bulunamadı.</p>;
 
   return (
     <main className="flex flex-col min-h-screen bg-white md:flex-row m-0 p-0">
-      {/* Sol Liste */}
-      <div className="w-[480px] bg-white border-b md:border-r border-gray-300 md:border-b-0 overflow-x-auto md:overflow-y-auto md:h-screen">
-        <ul className="flex flex-row text-black text-sm w-full whitespace-nowrap md:flex-col">
-          {news.map((item, index) => (
-            <li
-              key={item._id}
-              className={`relative border-b border-gray-300 p-6 flex flex-row items-start transition duration-300 ${
-                selectedNews?._id === item._id ? "bg-yellow-50" : ""
-              }`}
-              onClick={() => setSelectedNews(item)}
-            >
-              <div className="absolute top-0 left-6 font-bold text-2xl pt-0 md:text-5xl opacity-25">
-                {String(index + 1).padStart(2, "0")}
-              </div>
-              <img
-                className="mr-7 pt-3"
-                src="/images/14.png"
-                alt={`Haber ${item.title}`}
-                width={160}
-                height={48}
-              />
-              <div className="flex-1 flex flex-col">
-                <p className="text-sm font-bold text-black">
-                  {item.title.slice(0, 30)}...
-                </p>
-                <br />
-                <p className="text-xs text-black opacity-50">3 saat önce</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+      {/* Sol Kısım - Haber Özeti */}
+      <div className="w-[480px] bg-white border-b md:border-r border-gray-300 md:border-b-0 overflow-auto md:h-screen p-6">
+        <h2 className="text-xl font-bold mb-4">Haber Özeti</h2>
+        <div className="p-6 border border-gray-300 rounded-md bg-yellow-50">
+          <div className="font-bold text-lg">{news.title}</div>
+          <p className="text-sm text-gray-700 mt-2 ">{news.summary.slice(0, 100)}...</p>
+        </div>
       </div>
 
-      {/* Sağ Detay */}
+      {/* Sağ Kısım - Haber Detayı */}
       <div className="flex-1 bg-yellow-50 p-4 md:p-8 h-full md:h-screen overflow-y-auto">
-        <div className="text-black">
-          {selectedNews ? (
-            <div className="flex flex-col">
-              <h1 className="mb-4 text-xl md:text-2xl font-bold">
-                {selectedNews.title}
-              </h1>
-              <div className="flex flex-col justify-end pt-8 pb-2">
-                <img
-                  src="/images/14.png"
-                  alt="Haber görseli"
-                  width={600}
-                  height={400}
-                  className="w-full max-w-2xl mx-auto object-cover"
-                />
-              </div>
-              <div className="mt-4 text-sm md:text-base">
-                <p className="mb-4">{selectedNews.summary}</p>
-              </div>
-            </div>
-          ) : (
-            <div className="mb-4 text-xl md:text-2xl font-bold">
-              Bir haber seçin
-            </div>
-          )}
+        <h1 className="mb-4 text-xl md:text-2xl font-bold">{news.title}</h1>
+        <div className="flex flex-col justify-end pt-8 pb-2">
+          <img
+            src="/images/14.png"
+            alt="Haber görseli"
+            width={600}
+            height={400}
+            className="w-full max-w-2xl mx-auto object-cover"
+          />
+        </div>
+        <div className="mt-4 text-sm md:text-base">
+          <p className="mb-4">{news.summary}</p>
         </div>
       </div>
     </main>

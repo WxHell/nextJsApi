@@ -2,9 +2,17 @@
 "use client"
 import { useState } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import { useFetchSlugNews } from "../hooks/useFetch";
+import { fetchCategoryByNews } from "../axioService/allFetchNews";
 
 export default function CategoriesMenu({children}) {
+  const {slug} = useParams();
+  const {data:news,loading,error} = useFetchSlugNews(()=>fetchCategoryByNews(slug),[slug])
   const [isOpen, setIsOpen] = useState(false);
+  if(loading) return <p>Haberler yükleniyor...</p>
+  if(error) return <p>Haberler alınırken bir hata oluştu.</p>
+  if(!news) return <p>Haber bulunamadı</p>
   return (
         <main className="fixed h-screen w-screen flex" 
         >

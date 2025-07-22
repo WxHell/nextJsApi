@@ -1,7 +1,7 @@
 import CategoriesMenu from "../../components/CategoriesMenu";
 
 export default function NewsLayout({ children }) {
-  return (
+  return (  
     <CategoriesMenu>
       {children}
     </CategoriesMenu>

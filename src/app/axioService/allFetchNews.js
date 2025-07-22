@@ -4,3 +4,11 @@ export async function fetchAllNews() {
     return res.data.news;
 }
 
+export async function fetchNewsById(id) {
+    const res = await api.get(`/news/${id}`)
+    return res.data._id
+}
+export async function fetchCategoryByNews(slug) {
+    const res = await api.get(`/category/${slug}/news`)
+    return res.data.content
+}
