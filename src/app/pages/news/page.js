@@ -11,9 +11,8 @@ export default function Page() {
     loading,
     error,
   } = useFetch(fetchAllNews);
-  if (loading) return <p>Haberler yükleniyor...</p>;
+  if(loading || !news) return null;
   if (error) return <p>Haberler alınırken hata oluştu.</p>;
-  if (!news) return <p>Haber bulunamadı.</p>;
   return (
     <main className="flex min-h-screen flex flex row relative">
       <div className="flex w-[400px] items-center bg-[#FFF] p-8 border-r">

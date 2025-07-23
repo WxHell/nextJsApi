@@ -26,3 +26,4 @@ export async function getNewsByCategoryId(categoryId) {
     return db.collection("News").find({category:new ObjectId(categoryId)}).toArray();
     
 }
+

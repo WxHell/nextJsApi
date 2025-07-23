@@ -4,8 +4,9 @@ import { getDb } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET(req,{params}) {
-   try{
-    const slug = params.slug;
+  const {slug} = params; 
+  try{
+    
     const db = await getDb();
       
     if (!slug) {
@@ -13,7 +14,7 @@ export async function GET(req,{params}) {
     }
     const category = await getSlugByNews(slug);
     if(!category){
-        return NextResponse.json({succes:false , message:"Categori alanamadı"},{status:404});
+        return NextResponse.json({success:false , message:"Categori alanamadı"},{status:404});
     }
     const newsBySlug = await getNewsByCategoryId(category._id);
     const populatedNews = newsBySlug.map(news => ({
@@ -25,7 +26,7 @@ export async function GET(req,{params}) {
       }
     }));
 
-    return NextResponse.json({succes:true,data:populatedNews});
+    return NextResponse.json({succes:true,data:populatedNews},{status:200});
     }catch(error){
         return handleApiError(error,"Haberler alınamadı")
     }

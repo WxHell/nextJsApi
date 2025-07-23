@@ -13,9 +13,8 @@ export default function Page() {
     loading,
     error,
   } = useFetchSlugNews(() => slug ? fetchCategoryByNews(slug):Promise.resolve(null),[slug] );
-  if(loading) return <p>Haberler yükleniyor...</p>
-  if(error) return <p>Haberler alınırken hata oluştu</p>
-  if(!news) return <p>Haber bulunamadı</p>
+  if( loading || !news) return null
+  if(error) return <p>Haber alınırken hata oluştu</p>
  
  
  
@@ -28,7 +27,7 @@ export default function Page() {
             Bugün ne oldu?
           </div>
           <div className="text-[15px] text-[#95989A] font-[Poppins]">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+         {slugNews?.[0]?.summary ?? "Haber Yok"}
           </div>
         </div>
         <footer className="text-xs text-[#95989A] absolute bottom-4 font-[Poppins] ">

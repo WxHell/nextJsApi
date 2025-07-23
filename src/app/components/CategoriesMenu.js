@@ -12,9 +12,8 @@ export default function CategoriesMenu({children}) {
     loading,
     error
   } = useFetch(fetchCategory);
-  if(loading) return <p>Kategoriler yükleniyor...</p>
-  if(error) return <p>Kategoriler alınamadı</p>
-  if(!category) return <p>Kategori bulunamadı</p>
+  if(loading || !category)  return null;
+  if(error) return <p>Kategoriler bulunamadı</p>
   return (
         <main className="fixed h-screen w-screen flex" 
         >
