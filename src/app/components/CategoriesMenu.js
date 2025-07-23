@@ -2,7 +2,7 @@
 "use client"
 import { useState } from "react";
 import Link from "next/link";
-import useFetch from "../hooks/useFetch";
+import {useFetch} from "../hooks/useFetch";
 import { fetchCategory } from "../axioService/allFetchNews";
 
 export default function CategoriesMenu({children}) {

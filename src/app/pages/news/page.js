@@ -2,7 +2,7 @@
 import CategoriesMenu from "@/app/components/CategoriesMenu";
 import NewsCard from "../../components/NewsCard";
 
-import useFetch from "@/app/hooks/useFetch";
+import {useFetch} from "../../hooks/useFetch";
 import { fetchAllNews } from "@/app/axioService/allFetchNews";
 
 export default function Page() {

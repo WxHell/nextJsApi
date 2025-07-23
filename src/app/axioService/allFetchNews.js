@@ -17,3 +17,7 @@ export async function fetchCategory() {
     const res = await api.get(`/category`);
     return res.data.category;
 }
+export async function fetchCategoryByNewsId(slug,id) {
+    const res = await api.get(`/category/${slug}/news/${id}`)
+    return res.data.data;
+}

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
-import useFetch from "./hooks/useFetch";
+import {useFetch} from "./hooks/useFetch";
 import { fetchAllNews } from "./axioService/allFetchNews";
 
 export default function Home() {
