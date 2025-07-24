@@ -47,7 +47,7 @@ export default function Page() {
 
         <div className="w-[calc(100%-400px)] bg-white overflow-x-auto h-screen">
           <ul className="text-black text-sm flex flex-row items-stretch h-full">
-            {displayAllNews.flatMap((item, index) => (
+            {displayAllNews.flatMap((item, index) => ( 
               index % 3 === 2 ?
 
                 [<li key={item._id || index} className='h-full'>
