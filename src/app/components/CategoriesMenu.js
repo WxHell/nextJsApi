@@ -60,12 +60,12 @@ export default function CategoriesMenu({children}) {
           </div>
     
           {/* Expanded Menu as Compound Component */}
-          <div className={`z-10 absolute top-0 bg-[#cf151c] ${isOpen ? 'w-screen left-20' : '-left-[580px]'} h-screen transition-all duration-500 cursor-pointer`}
+          <div className={`z-10 absolute top-0 bg-[#cf151c] ${isOpen ? 'w-screen md:w-[400px] left-20' : '-left-[580px]'} h-screen transition-all duration-500 cursor-pointer`}
             onClick={() => setIsOpen(!isOpen)}
           >
             <div className="p-8">
               <div className="absolute top-0 bottom-0 m-auto flex items-center">
-                <ul className="text-5xl text-white font-bold flex flex-grow flex-col justify-center space-y-4"                >
+                <ul className="text-5xl text-white font-bold flex flex-grow flex-col justify-center space-y-4">
                   
                   <li className="z-40 transition-colors hover:text-[#980C10]"><Link href="/"> Anasayfa</Link></li>
                   {category.map((item,index) =>(

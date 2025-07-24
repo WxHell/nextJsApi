@@ -46,7 +46,7 @@ export default function Page() {
   return (
     <main className="flex flex-col min-h-screen bg-white md:flex-row m-0 p-0">
       {/* Sol Menü – Haber listesi */}
-      <div className="w-full md:w-[480px] bg-white border-b md:border-r border-gray-300 md:border-b-0 md:h-screen overflow-y-auto">
+      <div className="w-full md:w-[400px] bg-white border-b md:border-r border-gray-300 md:border-b-0 md:h-screen overflow-y-auto">
         <ul className="flex flex-col">
           {displayAllNews?.map((item, index) => (
             <li
