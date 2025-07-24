@@ -1,7 +1,7 @@
 import { getNewsByCategoryId, getSlugByNews } from "@/app/services/categoryService";
 import { getNewsById } from "@/app/services/newsService";
 import { handleApiError } from "@/app/utils/errorHandler";
-import { getDb } from "@/lib/db";
+
 import { NextResponse } from "next/server";
 
 export async function GET(req,{params}) {

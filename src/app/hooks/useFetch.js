@@ -6,9 +6,16 @@ export  function useFetch(fetchFn) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     fetchFn()
-      .then(setData)
-      .catch(setError)
+      .then((res) => {
+        setData(res);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err);
+        setData(null);
+      })
       .finally(() => setLoading(false));
   }, [fetchFn]);
 
