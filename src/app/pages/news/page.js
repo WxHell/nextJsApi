@@ -50,7 +50,7 @@ export default function Page() {
           {displayAllNews.map((item, index) =>
             index % 4 === 3 ? (
               <li
-                key={`reklam-${index}`} // ✅ REKLAM kutucuğuna da key eklendi
+                key={`reklam-${index}`} 
                 className="relative border-r border-gray-300 px-4 min-w-[280px] max-w-[280px] flex flex-col justify-center"
               >
                 <div className="absolute top-4 left-4 font-bold text-4xl opacity-25">

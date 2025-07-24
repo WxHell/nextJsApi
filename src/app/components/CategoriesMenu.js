@@ -65,7 +65,7 @@ export default function CategoriesMenu({children}) {
           >
             <div className="p-8">
               <div className="absolute top-0 bottom-0 m-auto flex items-center">
-                <ul className="text-5xl text-white font-bold flex flex-grow flex-col justify-center space-y-4">
+                <ul className="text-3xl text-white font-bold flex flex-grow flex-col justify-center space-y-4">
                   
                   <li className="z-40 transition-colors hover:text-[#980C10]"><Link href="/"> Anasayfa</Link></li>
                   {category.map((item,index) =>(
