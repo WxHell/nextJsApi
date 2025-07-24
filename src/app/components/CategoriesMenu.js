@@ -87,7 +87,7 @@ export default function CategoriesMenu({children}) {
                       <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                      <img src="/images/Group420.png" alt="Search" className="h-6 w-6" />
+                      <img src="/images/Group420.png" alt="Search" className="h-6 w-3" />
                       </Link>
                     </li>
                     <li className="hover:opacity-80">
