@@ -42,7 +42,7 @@ export default function Page() {
         <ul className="text-black text-sm flex flex-row items-stretch h-full">
           {slugNews.map((item,index) => (
             index % 4 === 3 ?
-              <li className="relative border-r border-gray-300 px-4 min-w-[280px] max-w-[280px] flex flex-col justify-center px-4">
+              <li key={item._id || index} className="relative border-r border-gray-300 px-4 min-w-[280px] max-w-[280px] flex flex-col justify-center px-4">
                 <div className="absolute top-4 left-4 font-bold text-4xl opacity-25">REKLAM</div>
                 <img src="/images/reklam.png" alt="Görsel" width={260} height={150}/>
               </li> : 
