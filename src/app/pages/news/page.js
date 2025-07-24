@@ -52,16 +52,25 @@
         <div className="w-[calc(100%-400px)] bg-white overflow-x-auto h-screen">
           <ul className="text-black text-sm flex flex-row items-stretch h-full">
             {displayAllNews.map((item, index) => (
-              <li key={item._id || index} className='h-full'>
-                <NewsCard
-                  id={item._id}
-                  title={item.title}
-                  summary={item.summary}
-                  PublishTime={item.publishedAt}
-                  imageLink={item.coverImage}
-                  index={index}
-                />
-              </li>
+              index % 4 === 3 ?
+                <li className="relative border-r border-gray-300 px-4 min-w-[280px] max-w-[280px] flex flex-col justify-center px-4">
+                  <div className="absolute top-4 left-4 font-bold text-4xl opacity-25">REKLAM</div>
+                  <img src="/images/reklam.png" alt="Görsel" width={260} height={150}/>
+                </li> : 
+                <li key={item._id || index} className='h-full'>
+                  <NewsCard
+                    id={item._id}
+                    title={item.title}
+                    summary={item.summary}
+                    PublishTime={new Date(item.publishedAt).toLocaleDateString("tr-TR", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                    imageLink={item.coverImage}
+                    index={index}
+                  />
+                </li>
             ))}
           </ul>
         </div>
