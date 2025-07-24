@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
 import CategoriesMenu from "../../../components/CategoriesMenu";
-import NewsCard from "../../../components/NewsCard";
+// import NewsCard from "../../../components/NewsCard";
 import { fetchNewsById, fetchAllNews } from "@/app/axioService/allFetchNews";
 import { useFetchById, useFetch } from "@/app/hooks/useFetch";
+import { useParams, useRouter } from "next/navigation";
+// import Image from "next/image";
+
 
 const loremIpsum = `
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
@@ -50,18 +52,31 @@ export default function Page() {
             <li
               key={item._id}
               onClick={() => router.push(`/pages/news/${item._id}`)}
-              className={`cursor-pointer hover:bg-gray-100 transition ${
-                item._id === id ? "bg-yellow-100" : ""
-              }`}
+              className={`cursor-point relative border-b border-gray-300 p-6 hover:bg-yellow-50 flex flex-row items-start transition duration-300 ${item._id === id ? 'bg-yellow-50' : ''
+                                }`}
             >
-              <NewsCard
-                id={item._id}
-                title={item.title}
-                summary={item.summary}
-                PublishTime={item.publishedAt}
-                imageLink={item.coverImage}
-                index={index}
+              <div className="absolute top-6 left-6 text-black font-bold text-2xl pt-0 md:text-5xl opacity-25">{String(index + 1).padStart(2, "0")}</div>
+              <img
+                  className="mr-7 pt-9"
+                  src={item.coverImage}
+                  alt={`Haber ${id}`}
+                  width={160}
+                  height={48}
               />
+              <div className="flex-1 flex flex-col">
+                  <p className="text-sm font-bold" style={{ color: '#000000' }}>
+                      <br></br>
+                      {item.title}
+                  </p>
+                  <br />
+              <p className="text-xs" style={{ color: '#000000' }}>
+                {new Date(item.publishedAt).toLocaleDateString("tr-TR", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </p>
+              </div>
             </li>
           ))}
         </ul>
@@ -83,7 +98,7 @@ export default function Page() {
                 />
               </div>
               <div className="mt-4 text-sm md:text-base whitespace-pre-wrap">
-                {news.content || loremIpsum}
+                {news.content.trim() || loremIpsum}
               </div>
             </div>
           </div>
