@@ -6,10 +6,9 @@ import { useFetchSlugNews } from '@/app/hooks/useFetch';
 import { fetchCategoryByNews } from '@/app/axioService/allFetchNews';
 
 export default function Page() {
-  const news = [];
-  const {slug} = useParams();
+  const { slug } = useParams();
   const {
-    data:slugNews,
+    data: slugNews,
     loading,
     error,
   } = useFetchSlugNews(() => slug ? fetchCategoryByNews(slug):Promise.resolve(null),[slug] );
@@ -84,8 +83,6 @@ export default function Page() {
     </main>
   );
 }
-
-
 
 Page.getLayout = function getLayout(page) {
   return <CategoriesMenu>{page}</CategoriesMenu>;
