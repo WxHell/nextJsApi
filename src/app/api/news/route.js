@@ -10,16 +10,16 @@ export async function GET(req) {
     let limit = searchParams.get("limit");
     if (page === null && limit === null) {
       const allNews = await getAllNews();
-      return NextResponse.json({ success: true, news: allNews });
+      return NextResponse.json({ success: true, data: allNews });
     }
     page = parseInt(page);
     limit = parseInt(limit);
     if (isNaN(page) || isNaN(limit)) {
-      return NextResponse.json({ success: false, news: null });
+      return NextResponse.json({ success: false, data: null });
     }
 
     const News = await getAllNewsByPageNation(page, limit);
-    return NextResponse.json({ success: true, newsPage: News });
+    return NextResponse.json({ success: true, data: News });
   } catch (error) {
     return handleApiError(error, "Haberler getirelemedi");
   }

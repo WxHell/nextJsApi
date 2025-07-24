@@ -10,7 +10,7 @@ export  function useFetch(fetchFn) {
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false));
-  }, []);
+  }, [fetchFn]);
 
   return { data, loading, error };
 }
@@ -25,7 +25,7 @@ export function useCategory(fetchFn) {
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false));
-  }, []);
+  }, [fetchFn]);
   return { data, loading, error };
 }
 

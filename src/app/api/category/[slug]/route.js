@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req,{ params }) {
   try {
-    const { slug } =  params;
+    const { slug } =  await params;
     const slugByNews = await getSlugByNews(slug);
     
 

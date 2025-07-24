@@ -5,12 +5,12 @@ import { getDb } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET(req,{params}) {
-        const {slug,id} = params;
+        
     try{
-
-        const db = await getDb();
+        const {slug,id} =  await params;
+       
         if(!slug){
-            return NextResponse.json({succes:false,message:"Slug alınamadı"},{status:400});
+            return NextResponse.json({success:false,message:"Slug alınamadı"},{status:400});
         }
         const category = await getSlugByNews(slug);
         if(!category){

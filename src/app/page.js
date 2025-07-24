@@ -11,8 +11,8 @@ export default function Home() {
     loading: loadingNews,
     error: errorNews,
   } = useFetch(fetchAllNews);
-  if (loadingNews) return <p>Haberler Yükleniyor...</p>;
-
+ if(loadingNews || !news) return null;
+if(errorNews) return <p>Haberler yüklenemedi</p>
   return (
     <main className="flex flex-col lg:flex-row min-h-screen bg-[#CF161C] text-white">
       <div className="flex flex-col ">

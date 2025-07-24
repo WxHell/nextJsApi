@@ -2,22 +2,17 @@
 
 import CategoriesMenu from "../../../components/CategoriesMenu";
 import NewsCard from "../../../components/NewsCard";
-
 import { fetchNewsById, fetchAllNews } from "@/app/axioService/allFetchNews";
 import { useFetchById, useFetch } from "@/app/hooks/useFetch";
 import { useParams, useRouter } from "next/navigation";
 
-const loremIpsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore...`;
+const loremIpsum = `
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+`;
 
 export default function Page() {
   const { id } = useParams();
   const router = useRouter();
-
-  const {
-    data: news,
-    loading: loadingNews,
-    error: errorNews,
-  } = useFetchById(() => (id ? fetchNewsById(id) : Promise.resolve(null)), [id]);
 
   const {
     data: allNews,
@@ -25,16 +20,26 @@ export default function Page() {
     error: errorAll,
   } = useFetch(fetchAllNews);
 
-  if (loadingNews || loadingAll) return <p>Yükleniyor...</p>;
-  if (errorNews || errorAll) return <p>Veriler alınırken hata oluştu.</p>;
-  if (!news) return <p>Haber bulunamadı.</p>;
+  const {
+    data: news,
+    loading,
+    error,
+  } = useFetchById(
+    () => (id ? fetchNewsById(id) : Promise.resolve(null)),
+    [id]
+  );
+  if (loadingAll || loading) return null;
+  if (errorAll) return <p>Haberler alınırken hata oluştu.</p>;
+  if (error) return <p>Haber alınırken hata oluştu.</p>;
+  if (!allNews) return null;
+  if (!news) return <div>Haber yükleniyor...</div>;
 
   return (
     <main className="flex flex-col min-h-screen bg-white md:flex-row m-0 p-0">
       {/* Sol Menü – Haber listesi */}
       <div className="w-full md:w-[480px] bg-white border-b md:border-r border-gray-300 md:border-b-0 md:h-screen overflow-y-auto">
-        <ul className="flex flex-col divide-y divide-gray-200">
-          {allNews.map((item, index) => (
+        <ul className="flex flex-col">
+          {(allNews || []).map((item, index) => (
             <li
               key={item._id}
               onClick={() => router.push(`/pages/news/${item._id}`)}
@@ -60,9 +65,6 @@ export default function Page() {
         <div className="text-black">
           <div className="flex flex-col">
             <h1 className="mb-4 text-xl md:text-2xl font-bold">{news.title}</h1>
-
-            <p className="text-sm text-gray-600 mb-4">{news.summary}</p>
-
             <div className="flex flex-col justify-end pt-8 pb-2">
               <img
                 className="w-full max-w-2xl mx-auto object-cover"
@@ -72,8 +74,7 @@ export default function Page() {
                 height={400}
               />
             </div>
-
-            <div className="mt-4 text-sm md:text-base whitespace-pre-wrap leading-relaxed">
+            <div className="mt-4 text-sm md:text-base whitespace-pre-wrap">
               {news.content || loremIpsum}
             </div>
           </div>

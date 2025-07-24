@@ -4,11 +4,9 @@ import { getDb } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET(req,{params}) {
-  const {slug} = params; 
   try{
-    
-    const db = await getDb();
-      
+  const {slug} = await params; 
+        
     if (!slug) {
       return NextResponse.json({ success: false, message: "Slug alınamadı" }, { status: 400 });
     }
